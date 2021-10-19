@@ -1,21 +1,22 @@
-const inquirer = require("inquirer");
+const inquirer = require('inquirer');
 const fs=require('fs')
+//ебать
 
-const Manager = require( "../lib/Manager" );
-const man=require('../lib/man')
+const Manager = require('../lib/manager');
+const man=require('../lib/Man')
 
-const Engineer = require( "../lib/Engineer" );
-const eng=require('../lib/eng')
-const Intern = require( "../lib/Intern" );
-const int=require('../lib/int')
+const Engineer = require('../lib/engineer');
+const eng=require('../lib/Eng')
+const Intern = require('../lib/intern');
+const int=require('../lib/Int')
 const start=require('../lib/start')
 
-let teamHoldy = [];
+let devTeam = [];
 ;
 
 questions = {
-    headacheGen(teamHoldy) {
-       const holdyboy = [];
+    teamGen(devTeam) {
+       const teamHold = [];
        const headTitle = `
  <!DOCTYPE html>
  <html lang = "en">
@@ -31,84 +32,85 @@ questions = {
  </head>
  <body>
     <div class = "title-bar text-center">
-       <h1>${teamHoldy[0]}'s Employees</h1>
+       <h1>${devTeam[0]}'S EMPLOYEES</h1>
     </div>
     <div class = "card-container row align-items-start ">
     `;
-       holdyboy.push(headTitle);
+       teamHold.push(headTitle);
 
-       for ( let i = 1; i < teamHoldy.length; i++ ) {
-          let headacheHtml = `
+       for ( let i = 1; i < devTeam.length; i++ ) {
+          let styleHTML = `
           <div class="card col text-white bg-dark mb-3" style="width: 18rem;">
             <div class="card-body ">
-            <h5 class="card-title">${teamHoldy[i].role}</h5>
+            <h5 class="card-title">${devTeam[i].role}</h5>
                   `;
  
                 
-                if (teamHoldy[i].role === "Manager") {
-                   headacheHtml += `<p class="card-text bi bi-telephone"> ${teamHoldy[i].name}   
+                if (devTeam[i].role === "Manager") {
+                   styleHTML += `<p class="card-text bi bi-telephone"> ${devTeam[i].name}   
                    </p>`;
 
-                } else if (teamHoldy[i].role === "Intern") {
-                   headacheHtml += `<p  class="card-text bi bi-piggy-bank"> ${teamHoldy[i].name} 
+                } else if (devTeam[i].role === "Intern") {
+                   styleHTML += `<p  class="card-text bi bi-piggy-bank"> ${devTeam[i].name} 
                     </p>`;
                 }
-                else if (teamHoldy[i].role === "Engineer") {
-                   headacheHtml += `<p class="card-text bi bi-sd-card"> ${teamHoldy[i].name}  
+                else if (devTeam[i].role === "Engineer") {
+                   styleHTML += `<p class="card-text bi bi-sd-card"> ${devTeam[i].name}  
                     </p>`;
                 }
                
  
-                headacheHtml += `
+                styleHTML += `
              </div>
              <ul class="list-group list-group-flush">
-             <li class="list-group-item"><p><b>Employee ID:</b> ${teamHoldy[i].id}</p></li>
-             <li class="list-group-item"><p><b>Email:</b><br><a href = "mailto:${teamHoldy[i].email}">${teamHoldy[i].email}</a></p></li>
+             <li class="list-group-item"><p><b>Employee ID:</b> ${devTeam[i].id}</p></li>
+             <li class="list-group-item"><p><b>Email:</b><br><a href = "mailto:${devTeam[i].email}">${devTeam[i].email}</a></p></li>
             
           `;
  
          
-          if (teamHoldy[i].officeNumber ) {
-             headacheHtml += `<li class="list-group-item"><p><b>Office Number:</b><br>${teamHoldy[i].officeNumber}</p></li>`;
+          if (devTeam[i].officeNumber ) {
+             styleHTML += `<li class="list-group-item"><p><b>Office Number:</b><br>${devTeam[i].officeNumber}</p></li>`;
           }
-          else if (teamHoldy[i].school) {
-             headacheHtml += `<li class="list-group-item"><p><b>School:</b><br>${teamHoldy[i].school}</p></li>`;
+          else if (devTeam[i].school) {
+             styleHTML += `<li class="list-group-item"><p><b>School:</b><br>${devTeam[i].school}</p></li>`;
           }
           
-          else if (teamHoldy[i].gitUsername) {
-             headacheHtml += `<li class="list-group-item"><p><b>GitHub:</b><br><a href = "https://github.com/${teamHoldy[i].gitUsername}">${teamHoldy[i].gitUsername}</a></p></li>`;
+          else if (devTeam[i].gitUsername) {
+             styleHTML += `<li class="list-group-item"><p><b>GitHub:</b><br><a href = "https://github.com/${devTeam[i].gitUsername}">${devTeam[i].gitUsername}</a></p></li>`;
           }
           
           
  
-          headacheHtml += `
+          styleHTML += `
             </ul>
              </div>
           
           `;
-          holdyboy.push(headacheHtml);
+          teamHold.push(styleHTML);
        };
  
        const htmlFooter = `
     </div>   
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
+
  </body>
  </html>
  `;
-       holdyboy.push (htmlFooter);
-       return holdyboy;
+       teamHold.push (htmlFooter);
+       return teamHold;
     }
  };
 
 
-const writeToFile = (holdyboy) => {
- fs.writeFile( "index.html", `${holdyboy}`,(err)=>{
-    err ? console.log(err) : console.log('itwork')
+const writeToFile = (teamHold) => {
+ fs.writeFile( "index.html", `${teamHold}`,(err)=>{
+    err ? console.log(err) : console.log('Success! Check the index.html for your webpage.')
  })}
 
  function gennyHFile() {
-    const holdyboy = questions.headacheGen(teamHoldy);
-    writeToFile(holdyboy);
+    const teamHold = questions.teamGen(devTeam);
+    writeToFile(teamHold);
  };
  
 
@@ -121,7 +123,7 @@ const writeToFile = (holdyboy) => {
        const internSchool = data.internSchool;
        const teamMember = new Intern( internName, internId, internEmail, internSchool );
  
-       teamHoldy.push(teamMember);
+       devTeam.push(teamMember);
  
       
        addTeam();
@@ -137,7 +139,7 @@ const writeToFile = (holdyboy) => {
        const engineergitUsername = data.engineergitUsername;
        const teamMember = new Engineer( engineerName, engineerId, engineerEmail, engineergitUsername );
        
-       teamHoldy.push(teamMember);
+       devTeam.push(teamMember);
  
        
        addTeam();
@@ -147,7 +149,7 @@ const writeToFile = (holdyboy) => {
  function addTeam() {
     inquirer.prompt( start )
     .then( function( data ) {
-       switch ( data.choosie ) {
+       switch ( data.select ) {
           case "Add Engineer":
              addEng();
              break;
@@ -170,7 +172,7 @@ const writeToFile = (holdyboy) => {
        const managerOfficeNum = data.managerOfficeNum;
        const teamMember = new Manager(managerName, managerId, managerEmail, managerOfficeNum);
        
-       teamHoldy.push(teamMember);
+       devTeam.push(teamMember);
        addTeam();
     });
  };
@@ -178,7 +180,7 @@ const writeToFile = (holdyboy) => {
  function init() {
     inquirer.prompt([
        {
-          message: "Input Name for the things plz:",
+          message: "Input the name of the Dev Team:",
           name: "teamName",
           validate: teamNameInput => {
              if ( teamNameInput && teamNameInput.trim().length > 0 ) {
@@ -193,7 +195,7 @@ const writeToFile = (holdyboy) => {
     ])
     .then(function(data) {
        const teamName = data.teamName.toUpperCase()
-       teamHoldy.push(teamName);
+       devTeam.push(teamName);
        addMan();
     });
  };
