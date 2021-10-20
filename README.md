@@ -42,5 +42,8 @@
   ## Repository
   [GitHub](https://github.com/cole-cochran/Dev-Team-Profile-Generator)
 
+  ## Recording link
+  [Google Drive](https://drive.google.com/drive/folders/1UQJToEqoTKC-NlyW0FtSMrYxnfPB9Bbn?usp=sharing)
+
   ## Contact
   [Contact Us](mailto:colecochran405@gmail.com)
