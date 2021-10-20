@@ -1,4 +1,4 @@
-const Manager = require("../lib/Manager");
+const Manager = require('../lib/Manager');
 //const { describe } = require("@jest/globals");
 
 const manager = new Manager('Anakin Skywalker', 1, 'darth.vader@starwars.com', 66);

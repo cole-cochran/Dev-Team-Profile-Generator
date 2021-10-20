@@ -1,4 +1,4 @@
-const Intern = require("../lib/Intern");
+const Intern = require('../lib/Intern');
 const intern = new Intern('LukeSkywalker', 2, 'luke.skywalker@starwars.com', 'YODA');
 
 
